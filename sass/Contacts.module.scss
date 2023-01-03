@@ -1,0 +1,371 @@
+@import './variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.hidden {
+    opacity: 0 !important;
+
+    .mail {
+        transform: rotateX(90deg);
+    }
+}
+
+.visible {
+    transition: opacity 2s;
+    opacity: 1;
+
+    .mail {
+        transform: rotateX(0);
+    }
+}
+
+.containerContacts {
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .mobile {
+        padding-top: $headerHeight;
+    }
+
+    .main {
+        background-image: url(https://i.ibb.co/r6CQzTd/gradient-5276.png), url(https://i.ibb.co/CBY1zbb/gradient-5271.png);
+        background-repeat: no-repeat;
+        background-position-x: right, left;
+        background-position-y: center, center;
+        background-size: 100vh;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: calc(100vh - 2 * $headerHeight - 2px);
+
+        .mailTelegram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            background-image: url(https://i.ibb.co/dgSSjjd/diamond-5244.png);
+            background-repeat: no-repeat;
+            background-position-x: left;
+            background-position-y: bottom;
+
+            .mailWrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 5vh;
+
+                .fixer {
+                    user-select: none;
+                    opacity: 0;
+                    transition: .4s;
+                    position: absolute;
+                    left: 92%;
+                    top: -30px;
+
+                    .bubble {
+                        height: 25px;
+                        width: fit-content;
+                        padding: 0 5px;
+                        background-color: #708AD4;
+                        display: block;
+                        margin: 0 auto;
+                        border-radius: 20px;
+                        font-size: 20px;
+                        text-align: center;
+                        left: -40px;
+                        top: -40px;
+                    }
+
+                    .pointer {
+                        height: 10px;
+                        width: 10px;
+                        background-color: #708AD4;
+                        margin: 0 auto;
+                        transform: rotate(45deg);
+                        border-radius: 0 0 12px 0;
+                        position: relative;
+                        left: -10px;
+                        top: -4px;
+                    }
+                }
+
+                .mail {
+                    user-select: none;
+                    cursor: pointer;
+                    font-size: 2.5rem;
+                    font-weight: weight(medium);
+                    padding: 5px;
+
+                    background: linear-gradient(#39279a 0 0) left / var(--p, 0) no-repeat;
+                    transition: 0.4s, background-position 0s;
+                }
+
+                .mail:hover {
+                    --p: 100%;
+                    background-position: left;
+                }
+
+                .copy {
+                    cursor: pointer;
+                    filter: invert(100%);
+                    margin-left: 10px;
+                    background-image: url(../public/images/copy.svg);
+                    background-repeat: no-repeat;
+                    background-position: left top;
+                    height: calc(2.5rem + 10px);
+                    width: 2.5rem;
+
+                    &:hover {
+                        transition: .2s;
+                        filter: invert(28%) sepia(93%) saturate(1716%) hue-rotate(236deg) brightness(91%) contrast(98%);
+                    }
+                }
+            }
+
+            .simple {
+                user-select: none;
+                font-size: 2rem;
+                margin-top: 10px;
+            }
+
+            .telegram {
+                margin-top: 15px;
+                font-size: 1rem;
+
+                a {
+                    text-decoration: underline;
+                    color: white;
+                }
+
+                a:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .mapTitle {
+            position: relative;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            .title {
+                user-select: none;
+                font-size: 2rem;
+                text-align: right;
+                margin-bottom: 15px;
+            }
+
+            .pointer {
+                max-height: 100px;
+                top: 10px;
+                filter: invert(100%);
+                transform: scaleX(-1) rotateZ(71deg);
+                position: absolute;
+                left: 100%;
+            }
+
+            .map {
+                height: 80%;
+                width: 40vw;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0px 0px 10px 10px $lighterBGcolor;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1180px) and (min-width: 880px) {
+    .main {
+        overflow-x: hidden;
+    }
+
+    .map {
+        width: 60vw !important;
+    }
+}
+
+@media only screen and (max-width: 880px) and (min-width: 535px) {
+    .main {
+        overflow-x: hidden;
+        background-size: 50vh !important;
+        background-position-y: top, top !important;
+    }
+
+    .title {
+        font-size: 1.6rem !important;
+    }
+
+    .map {
+        width: 75vw !important;
+    }
+}
+
+@media only screen and (max-width: 535px) and (min-width: 385px) {
+    .main {
+        overflow-x: hidden;
+        background-size: 50vh !important;
+        background-position-y: top, top !important;
+    }
+
+    .title {
+        font-size: 1.2rem !important;
+    }
+
+    .map {
+        width: 70vw !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 385px) and (min-width: 200px) {
+    .main {
+        overflow-x: hidden;
+        background-size: 30vh !important;
+        background-position-y: top, top !important;
+    }
+
+    .title {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+    }
+
+    .map {
+        width: 95vw !important;
+    }
+
+    .pointer {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 650px) and (min-width: 515px) {
+    .mailTelegram {
+        .mail {
+            font-size: 2rem !important;
+        }
+
+        .copy {
+            width: 2rem !important;
+        }
+
+        .simple {
+            font-size: 1.7rem !important;
+        }
+
+    }
+
+    .fixer {
+        left: 85% !important;
+
+        .pointer {
+            left: 20px !important;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 515px) and (min-width: 385px) {
+
+    .mailTelegram {
+        .mail {
+            font-size: 1.5rem !important;
+            display: grid !important;
+            align-content: center !important;
+            justify-content: center !important;
+        }
+
+        .copy {
+            width: 1.5rem !important;
+        }
+
+        .simple {
+            font-size: 1rem !important;
+        }
+    }
+    .title {
+        text-align: center !important;
+    }
+    .mapTitle {
+        align-items: center !important;
+    }
+
+    .fixer {
+        top: -20px !important;
+        left: 80% !important;
+
+        .pointer {
+            top: -4px !important;
+            left: 23px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 385px) and (min-width: 200px) {
+    .containerContacts {
+        overflow-y: scroll;
+
+        .main {
+            height: 100vh !important;
+        }
+    }
+    .mapTitle {
+        align-items: center !important;
+    }
+
+    .mailTelegram {
+        background-size: 30px !important;
+
+        .mailWrapper {
+            margin-top: 20px !important;
+        }
+
+        .mail {
+            max-height: 30px;
+            display: grid !important;
+            align-content: center !important;
+            justify-content: center !important;
+            font-size: 1.4rem !important;
+        }
+
+        .copy {
+            max-height: 30px;
+            width: 1rem !important;
+        }
+
+        .simple {
+            font-size: 1rem !important;
+        }
+
+        .telegram {
+            text-align: center !important;
+            font-size: 0.9rem !important;
+            margin-top: 8px !important;
+        }
+    }
+
+    .fixer {
+        top: -30px !important;
+        left: 80% !important;
+
+        .pointer {
+            left: 6px !important;
+        }
+    }
+}

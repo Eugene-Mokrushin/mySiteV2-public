@@ -1,0 +1,14 @@
+@import './variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+
+.main {
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

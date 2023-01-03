@@ -1,0 +1,13 @@
+@import './variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+
+.main {
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+    width: 100vw;
+}

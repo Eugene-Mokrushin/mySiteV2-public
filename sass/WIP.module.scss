@@ -1,0 +1,312 @@
+@import './variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+$marginProgress: 20px;
+
+.shownWIP {
+    opacity: 1;
+    transition: all 1.3s;
+}
+
+.hiddenWIP {
+    transition: all 1s;
+    opacity: 0;
+}
+
+.main {
+    background-image: url(https://i.ibb.co/dbKx6xn/gradient-5272.png), url(https://i.ibb.co/6Wt05zR/gradient-5275.png), url(https://i.ibb.co/PgjW7Tt/gradient-5282.png), url(https://i.ibb.co/HtcY1Yq/gradient-5279.png);
+    background-repeat: no-repeat;
+    background-position-x: right, right, left, left;
+    background-position-y: center, center, center, center;
+    background-size: auto;
+    min-height: calc(100vh - 2 * $headerHeight - 2px);
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .wipWrapper {
+        width: 80vw;
+        max-width: 1200px;
+        max-height: 100%;
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .photoTextWrapper {
+            padding-top: 5vh;
+            color: white;
+            width: 100%;
+
+            .imgTitleWrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 100%;
+                height: 30vh;
+
+                .imageWrapper {
+                    position: relative;
+                    display: flex;
+                    min-height: 60%;
+                    min-width: 40%;
+                    min-height: fit-content;
+                    border-radius: 1.25rem;
+                    border: 2px solid white;
+                    transition: box-shadow .4s;
+                    box-shadow: 0px 0px 1.25rem 0px #743ad5;
+
+                    img {
+                        border-radius: 17px;
+                    }
+                }
+
+                .imageWrapper:hover {
+                    transition: box-shadow .4s;
+                    box-shadow: 0px 0px 1.25rem 0.938rem #39279a;
+                }
+
+                .title {
+                    max-width: 40%;
+                    display: grid;
+                    align-self: center;
+                }
+            }
+
+            .description {
+                margin-top: 5vh;
+                margin-bottom: 3vh;
+                font-size: 1.25rem;
+
+                .firstLetter {
+                    color: #7e6dd8;
+                    margin-left: 1.25rem;
+                    font-size: 1.875rem;
+                    font-weight: weight(bold);
+                }
+            }
+        }
+
+        .barWrapper {
+            user-select: none;
+            margin-top: 30px;
+            max-width: 1000px;
+            width: 80%;
+            position: relative;
+
+            .pin {
+                content: '';
+                text-align: center;
+                min-width: 19px;
+                min-height: 19px;
+                max-width: 19px;
+                max-height: 19px;
+                top: -50px;
+                background-color: white;
+                padding: 10px;
+                border-radius: 50%;
+                border: 2px solid #5042a3;
+                font-weight: weight(bold);
+                position: absolute;
+                z-index: 99;
+                left: 100%;
+                transform-style: preserve-3d;
+            }
+
+            .pin::before {
+                content: "";
+                position: absolute;
+                left: 0px;
+                top: 26px;
+                border-style: solid;
+                z-index: -1;
+                border-width: 31px 19px 0px 19px;
+                border-color: #ffffff rgba(245, 6, 6, 0) black rgba(46, 28, 109, 0);
+                transform: translateZ(-1px);
+            }
+
+            .meter {
+                box-sizing: content-box;
+                height: 20px;
+                position: relative;
+                margin: $marginProgress 0 20px 0;
+                background-color: #708AD4;
+                border-radius: 25px;
+                padding: 10px;
+                border: 2px solid #ececec;
+            }
+
+            .meter>span {
+                position: relative;
+                display: block;
+                height: 100%;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                background-color: #0f0925;
+                background-image: linear-gradient(90deg, #9664bc 0%, #39279a 100%);
+                box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .meter>span:after,
+            .animate>span>span {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+                z-index: 1;
+                background-size: 50px 50px;
+                animation: move 2s linear infinite;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                overflow: hidden;
+            }
+
+            .animate>span:after {
+                display: none;
+            }
+        }
+
+        .barWrapper::before {
+            position: absolute;
+            top: $marginProgress + 3px;
+            font-size: 30px;
+            left: -30px;
+            color: white;
+            content: "0";
+        }
+
+        .barWrapper::after {
+            position: absolute;
+            top: $marginProgress + 3px;
+            font-size: 30px;
+            left: calc(100% + 10px);
+            color: white;
+            content: "100";
+        }
+
+        #page-wrap {
+            margin: 80px auto;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1090px) and (min-width: 930px) {
+    .imageWrapper {
+        min-width: 60% !important;
+    }
+
+    .title {
+        max-width: 30% !important;
+    }
+
+    .description {
+        margin-top: 3vh !important;
+    }
+
+    .barWrapper {
+        margin-top: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 930px) and (min-width: 780px) {
+    .imageWrapper {
+        min-width: 60% !important;
+    }
+
+    .title {
+        max-width: 30% !important;
+    }
+
+    .description {
+        margin-top: 2vh !important;
+    }
+
+    .wipWrapper {
+        width: 95vw !important;
+    }
+}
+
+@media only screen and (max-width: 780px) and (min-width: 750px) {
+    .imageWrapper {
+        min-width: 60% !important;
+    }
+
+    .title {
+        max-width: 30% !important;
+    }
+
+    .description {
+        margin-top: 2vh !important;
+        margin-bottom: 1vh !important;
+    }
+
+    .wipWrapper {
+        width: 95vw !important;
+    }
+}
+
+@media only screen and (max-width: 750px) and (min-width: 200px) {
+    .main {
+        padding-top: calc($headerHeight);
+        background-size: 50%, 100%;
+        background-position-y: top, center, bottom, center !important;
+    }
+
+    .wipWrapper {
+        width: 90vw !important;
+        padding-bottom: 40px !important;
+    }
+
+    .photoTextWrapper {
+        padding: 0px !important;
+    }
+
+    .imgTitleWrapper {
+        flex-direction: column !important;
+        height: fit-content !important;
+
+        .imageWrapper {
+            min-height: 400px !important;
+        }
+
+        .title {
+            min-height: 30% !important;
+            margin-top: 5vh;
+            text-align: center;
+            max-width: 95% !important;
+        }
+    }
+
+    .firstLetter {
+        color: #180f50 !important;
+    }
+    .barWrapper::before,
+    .barWrapper::after {
+        top: 30px !important;
+        font-size: 20px !important;
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 50px 50px;
+    }
+}
