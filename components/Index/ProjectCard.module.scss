@@ -1,0 +1,308 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.visible {
+    transition: .5s;
+    opacity: 1 !important;
+    transform: translateY(0%) !important;
+}
+
+.visible:first-child {
+    transition: .5s;
+    opacity: 1 !important;
+    transform: translateY(0%) !important;
+}
+
+.visible:last-child {
+    transition: .5s;
+    opacity: 1 !important;
+    transform: translateY(0%) !important;
+}
+
+.cardUp {
+    transform: translateY(-20%);
+    opacity: 0;
+
+    .projectWrapper {
+        flex-direction: column;
+
+        .imgWrapper {
+            img {
+                border-radius: 1rem 1rem 0 0;
+            }
+        }
+
+        .titleTagsWrapper {
+            position: relative;
+            top: 60%;
+            border-radius: 0 0 1rem 1rem;
+
+            svg {
+
+                display: inline-block;
+                position: absolute;
+                bottom: 99%;
+                left: 0;
+                fill: $cardBackground;
+                transform: rotate(180deg);
+            }
+
+            .date {
+                display: inline;
+                z-index: 10;
+                position: absolute;
+                bottom: 105%;
+                right: 0;
+                margin-right: 15px;
+                font-weight: weight(bold);
+                font-size: 20px;
+            }
+
+        }
+    }
+}
+
+.cardDown {
+    transform: translateY(20%);
+    opacity: 0;
+
+    .projectWrapper {
+        flex-direction: column-reverse;
+
+        .imgWrapper {
+            img {
+                border-radius: 0 0 1rem 1rem;
+            }
+        }
+
+        .titleTagsWrapper {
+            position: relative;
+            top: 0;
+            border-radius: 1rem 1rem 0 0;
+
+            svg {
+                display: inline-block;
+                position: absolute;
+                top: 99%;
+                left: 0;
+                fill: $cardBackground;
+            }
+
+            .date {
+                display: inline;
+                z-index: 10;
+                position: absolute;
+                top: 105%;
+                margin-left: 15px;
+                font-weight: weight(bold);
+                font-size: 20px;
+            }
+        }
+
+    }
+
+}
+
+.card:last-child {
+    transition: 1s;
+    opacity: .5;
+}
+
+.card:first-child {
+    transition: 1s;
+    opacity: .5;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    transition: 1s;
+    opacity: .5;
+    align-items: center;
+    z-index: 5;
+    width: fit-content;
+    height: 60vh;
+
+    .projectWrapper {
+        transition: all .3s;
+        display: flex;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        height: 60vh;
+        width: 25vw;
+        border-radius: 1.35rem;
+        background-color: $cardBackground;
+
+        .imgWrapper {
+            position: relative;
+            z-index: 6;
+            scale: 1;
+            min-height: 60%;
+        }
+
+        .titleTagsWrapper {
+            background-color: $cardBackground;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 8;
+            position: absolute;
+            width: 100%;
+            height: 40%;
+
+            .title {
+                display: flex;
+                align-items: center;
+                margin-top: 5%;
+                padding-left: 15px;
+                padding-right: 30px;
+                height: 85%;
+                font-weight: weight(medium);
+                font-size: 1.6rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .tags {
+                height: max-content;
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+                padding: 0 15px;
+
+                .tag {
+                    width: fit-content;
+                    font-weight: weight(bold);
+                    border-radius: 10px;
+                    font-size: 1rem;
+                    margin-right: 10px;
+                    margin-top: 10px;
+                    border: 2px solid #44107a;
+
+                    .textSpan {
+                        transition: all .5s;
+                        text-align: center;
+                        margin: 5px 10px;
+                        background-image: linear-gradient(350deg,
+                                #231557 0%,
+                                #44107a 29%,
+                                #ff1361 67%,
+                                #fff800 100%);
+                        background-size: auto auto;
+                        background-clip: border-box;
+                        background-size: 200% auto;
+                        color: #fff;
+                        background-clip: text;
+                        // text-fill-color: transparent;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        animation: textclip 5s ease-in-out infinite;
+                        display: inline-block;
+                    }
+                }
+
+                .tag:hover {
+                    .textSpan {
+                        color: black !important;
+                        background: white;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        backdrop-filter: blur(0px);
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+.projectWrapper::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 25vw;
+}
+
+.projectWrapper:hover {
+    transition: all .3s ease-in-out;
+    transform: translateY(-40px);
+    border-radius: 1rem;
+    box-shadow: 0px 6px 20px 15px $lightPurbleColor;
+}
+
+.projectWrapper:hover::after {
+    height: 40px;
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 200px) {
+    .card:last-child {
+        display: none;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    .projectWrapper {
+        width: 40vw !important;
+    }
+}
+
+
+@media only screen and (max-width:800px) and (min-width: 200px) {
+
+    .card {
+        width: 65% !important;
+    }
+
+    .projectWrapper {
+        width: 100% !important;
+    }
+
+    .card:nth-child(2) {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width:500px) and (min-width: 200px) {
+    .card {
+        width: 80% !important;
+    }
+}
+
+@media only screen and (max-width:439px) and (min-width: 200px) {
+    .card.mobile:nth-child(2) {
+        transform: translateX(20%);
+        display: initial !important;
+    }
+
+    .card.mobile:nth-child(1) {
+        transform: translateX(-20%);
+        display: initial !important;
+    }
+
+    .mobile {
+        margin: 30px 0 !important;
+
+        .title {
+            margin-top: unset !important;
+        }
+
+        .projectWrapper {
+            height: 65vh !important;
+        }
+    }
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}

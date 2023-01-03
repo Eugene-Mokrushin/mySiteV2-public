@@ -1,0 +1,164 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.header {
+    position: fixed;
+    z-index: 10;
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+    background-color: $mainBGcolor;
+    display: flex;
+    align-items: center;
+    height: $headerHeight;
+    border-bottom: 2px solid $whiteBorder;
+    width: 100vw;
+
+    .logoWrapper {
+        width: 25%;
+    }
+
+    .navDescktop {
+        float: right;
+        margin-left: auto;
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 900px;
+
+        li {
+            list-style-type: none;
+
+            a {
+                white-space: nowrap;
+                user-select: none;
+                color: $menuLinkColor;
+                font-weight: weight(bold);
+                text-decoration: none;
+                font-size: 1.563rem;
+                padding: 5px 10px;
+
+                background: linear-gradient(#39279a 0 0) left / var(--p, 0) no-repeat;
+                transition: 0.4s, background-position 0s;
+            }
+
+            a:hover {
+                --p: 100%;
+                background-position: right;
+            }
+        }
+    }
+
+    .languageDropdown {
+        width: 25%;
+        max-width: 25%;
+        color: $menuLinkColor;
+        font-weight: weight(regular);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        list-style-type: none;
+        text-align: center;
+        line-height: 40px;
+
+        .currentLanguage {
+            user-select: none;
+            z-index: 1;
+            cursor: pointer;
+            color: $menuLinkColor;
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+            font-weight: weight(bold);
+            border: none;
+            position: relative;
+            display: inline-block;
+            border-radius: 6px 6px 0px 0px;
+            transition: background-color .4s;
+        }
+
+        .currentLanguage:hover {
+            outline: 2px solid $whiteBorder;
+            background-color: $lightPurbleColor !important;
+        }
+
+        .currentLanguage:hover+.langWrapper {
+            display: block;
+        }
+
+        .langWrapper {
+            padding-top: 5px;
+            z-index: 0;
+            display: none;
+            cursor: pointer;
+            background-color: $lighterBGcolor;
+            list-style-type: none;
+            position: absolute;
+            border-radius: 0px 0px 6px 6px;
+            top: 40px;
+
+            .dropdownContent {
+                user-select: none;
+                color: $menuLinkColor;
+                font-weight: weight(bold);
+                height: 40px;
+                top: 80px;
+                width: 40px;
+                z-index: 1;
+                transition: background-color 1s;
+            }
+
+            .dropdownContent:hover {
+                display: block;
+                outline: 2px solid $whiteBorder;
+                background-color: $lightPurbleColor;
+            }
+
+            .dropdownContent:last-child {
+                margin-top: 5px;
+                border-radius: 0px 0px 6px 6px;
+            }
+        }
+
+        .langWrapper:hover {
+            display: block;
+        }
+
+        .langWrapper:hover~.currentLanguage {
+            background-color: $lighterBGcolor;
+        }
+    }
+}
+
+
+.shown {
+    top: 0px;
+    transition: .6s cubic-bezier(0, 1.02, 0.59, 0.98);
+}
+
+.hidden {
+    top: -550px;
+    transition: .6s ease-in-out;
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 755px) {
+    .socialsWrapper {
+        width: 70% !important;
+    }
+
+    .copy {
+        background-image: url(https://i.ibb.co/q9sqW0L/shape-5049.png) !important;
+    }
+}
+
+
+.fakeHeader {
+    height: $headerHeight;
+    width: 100%;
+}

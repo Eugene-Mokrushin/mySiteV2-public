@@ -1,0 +1,219 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.readingWrapper {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .titleWrapper {
+        background: linear-gradient(45deg, #9664bc 0%, #39279a 50%, #0f0925 100%);
+        padding-bottom: 2px;
+        width: 100%;
+
+
+        .title {
+            display: flex;
+            align-items: center;
+            height: $headerHeight;
+            background-color: #ececec;
+
+            span {
+                display: inline-block;
+                color: black;
+                font-weight: weight(bold);
+                font-size: 60px;
+            }
+        }
+    }
+
+    .allBooks {
+        user-select: none;
+        background-image: url(https://i.ibb.co/QjjvW61/diamond-5227.png), url(https://i.ibb.co/sK6qpXX/diamond-5226.png);
+        background-repeat: no-repeat;
+        background-position-x: right, left;
+        background-position-y: 10%, 90%;
+        background-color: #ececec;
+        width: 100vw;
+        height: calc(100vh - $headerHeight);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .fSVG {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .books {
+            user-select: none;
+            transform: scale(1.5);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
+
+.span1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.span2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.4;
+    filter: url(#paper);
+}
+
+.title1 {
+    background-size: cover;
+    width: 12rem;
+    height: 100%;
+}
+
+.div1 {
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    transform-origin: left;
+    height: 18rem;
+    border-color: #111827;
+    filter: brightness(0.80) contrast(2.00);
+}
+
+.h2 {
+    font-weight: 500;
+    margin-left: 4px;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.span3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.4;
+    filter: url(#paper);
+}
+
+.div2 {
+    z-index: 50;
+    border-radius: 3px;
+    transform-origin: right;
+    height: 100%;
+    min-width: 44px;
+    filter: brightness(0.80) contrast(2.00);
+}
+
+.button1 {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    display: flex;
+    margin-left: 10px;
+    background-color: #ececec;
+    flex-direction: row;
+    align-items: center;
+    outline: 0;
+    perspective: 1000px;
+}
+
+.buttonB1 {
+    flex-basis: 15rem;
+    min-width: 15rem;
+    max-width: 15rem;
+}
+
+.buttonB2 {
+    flex-basis: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+}
+
+.buttonH:hover {
+    transform: translateY(-2rem);
+
+
+}
+
+.buttonH:focus-visible {
+    transform: translateY(-2rem);
+}
+
+.animStyle {
+    transition-timing-function: ease;
+    transition-property: all;
+    transition-duration: 500ms;
+    will-change: auto;
+    background: transparent;
+}
+
+@media only screen and (max-width: 720px) and (min-width: 200px) {
+    .books {
+        transform: scale(1.2) !important;
+        min-width: 200vw !important;
+
+        .button1 {
+            max-height: 432px !important;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 578px) and (min-width: 200px) {
+    .title {
+        span {
+            font-size: 45px !important;
+        }
+    }
+}
+
+.mobile {
+    height: fit-content !important;
+
+    .allBooks {
+        padding: 80px 0;
+        height: fit-content !important;
+    }
+
+    .book {
+        transform: scale(1.2) !important;
+        height: fit-content !important;
+    }
+
+    .titleWrapper {
+        .title {
+            height: 80px !important;
+
+            span {
+                font-size: 37px !important;
+            }
+        }
+    }
+}

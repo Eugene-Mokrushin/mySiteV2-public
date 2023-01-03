@@ -1,0 +1,109 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.pointOBS {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.secondSection {
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+    position: relative;
+    height: 100vh;
+    user-select: none;
+    border-width: $sectionBorderWidth;
+    border-bottom: $sectionBorderWidth solid;
+    border-image-slice: 1;
+    border-image-source: $purplePinkGradient;
+
+    .nyanWrapperWrapper {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+        z-index: 1;
+        transform: translateX(-200px) scale(0.4);
+        transform-origin: left top;
+
+        .nyanWrapper {
+            height: 100%;
+            width: 300px;
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .articlesWrapper {
+        background-color: $mainBGcolor;
+        font-family: 'Urbanist', 'Comfortaa', sans-serif;
+        height: calc(100vh - $headerHeight);
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        background-image:
+            url(https://i.ibb.co/HtcY1Yq/gradient-5279.png),
+            url(https://i.ibb.co/r6CQzTd/gradient-5276.png),
+            url(https://i.ibb.co/dbKx6xn/gradient-5272.png),
+            url(https://i.ibb.co/ydckDy8/diamond-5047.png),
+            url(https://i.ibb.co/LNpw9Pj/diamond-5046.png),
+            url(https://i.ibb.co/1JZjT8t/diamond-5245.png),
+            url(https://i.ibb.co/dgSSjjd/diamond-5244.png);
+        background-size: contain, contain, contain, 10%, 10%, 5%, 5%;
+        background-position-x: left, right, right, right, left, center, 60%;
+        background-position-y: center, center, center, 100%, 0%, 45%, 65%;
+        background-repeat: no-repeat;
+    }
+
+}
+
+@media only screen and (max-width:700px) and (min-width: 439px) {
+    .title {
+        display: grid;
+        align-content: center;
+        font-size: 50px !important;
+    }
+
+    .articlesWrapper {
+        background-size: initial, initial, initial, 20%, 25%, initial, initial !important;
+    }
+}
+
+@media only screen and (max-width:439px) and (min-width: 200px) {
+    .articlesWrapper {
+        background-position-y: center, center, center, top, bottom, center !important;
+        background-size: 70%, 70%, 70%, 20%, 25%, initial, initial !important;
+    }
+
+    .title {
+        display: grid;
+        align-content: center;
+        font-size: 34px !important;
+    }
+}
+
+@media only screen and (max-width:439px) and (min-width: 200px) {
+    .mobile {
+        height: fit-content !important;
+
+        .titleWrapper {
+            height: 80px !important;
+        }
+
+        .articlesWrapper {
+            padding-bottom: 30px !important;
+            height: fit-content !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+}

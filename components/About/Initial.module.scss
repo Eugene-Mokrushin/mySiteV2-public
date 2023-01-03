@@ -1,0 +1,216 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+$scrumbleHeight: 10vh;
+
+.fakeHeader {
+    height: $headerHeight;
+    width: 100vw;
+}
+
+
+.invisible {
+    .imageWrapper {
+        opacity: 0;
+    }
+
+    .title {
+        transform: translateX(-280px);
+    }
+
+    .text {
+        transform: translateX(40px);
+    }
+}
+
+.visible {
+    .imageWrapper {
+        opacity: 1;
+        transition: opacity 1.2s;
+    }
+
+    .title {
+        transform: translateX(0);
+        transition: transform 1.4s;
+    }
+
+    .text {
+        transform: translateX(0);
+        transition: transform 1.2s;
+    }
+}
+
+.initialWrapper {
+    height: calc(100vh - $headerHeight);
+    color: white;
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .scrumble {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: $scrumbleHeight;
+        font-size: 3rem;
+        border-top: 1px solid white;
+
+        span {
+            color: #708AD4;
+        }
+    }
+
+    .contentWrapper {
+
+        background-image: url(https://i.ibb.co/VmQcNKg/gradient-5274.png),
+            url(https://i.ibb.co/dbKx6xn/gradient-5272.png),
+            url(https://i.ibb.co/1JZjT8t/diamond-5245.png),
+            url(https://i.ibb.co/dgSSjjd/diamond-5244.png);
+        background-repeat: no-repeat;
+        background-position-x: left, right, 5%, 90%;
+        background-position-y: center, center, 90%, 5%;
+
+        display: flex;
+        height: calc(100vh - $headerHeight - $scrumbleHeight);
+        width: 100vw;
+        align-items: center;
+
+        .wrapperImg {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .imageWrapper {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                width: 80%;
+                max-width: 500px;
+                height: 85%;
+
+                img {
+                    overflow: hidden;
+                    filter: hue-rotate(45deg);
+                    transition: filter 1.5s;
+                    transition: .3s;
+                }
+
+                img:hover {
+                    transform: scale(1.05);
+                    filter: hue-rotate(0);
+                    transition: .5s;
+                }
+
+            }
+        }
+    }
+
+    .textWrapper {
+        display: inline-block;
+        width: calc(50%);
+        max-height: 90%;
+        margin: 20px;
+        overflow: hidden;
+
+        .title {
+            display: block;
+            font-weight: weight(bold);
+            font-size: 45px;
+        }
+
+        .text {
+            display: block;
+            font-weight: weight(regular);
+            font-size: 20px;
+            width: 90%;
+            margin-top: 30px;
+            margin-left: 5%;
+
+            p {
+                text-indent: 40px;
+            }
+
+            .paragraph {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 825px) and (min-width: 200px) {
+    .contentWrapper {
+        flex-direction: column !important;
+
+        .wrapperImg {
+            width: 70% !important;
+            height: 40% !important;
+        }
+
+        .textWrapper {
+            width: 80% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) and (min-width: 200px) {
+    .text {
+        p {
+            font-size: 18px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) and (min-width: 200px) {
+    .contentWrapper {
+        background-size: 70%, 70%, initial, initial !important;
+        background-position-y: top, bottom, 90%, 5%;
+    }
+
+    .scrumble {
+        font-size: 30px !important;
+    }
+}
+
+.mobile {
+    height: fit-content !important;
+
+    .contentWrapper {
+        height: fit-content !important;
+        background-size: 70%, 70%, initial, initial !important;
+        background-position-y: top, bottom, 90%, 5%;
+    }
+
+    .wrapperImg {
+        width: 80% !important;
+        margin-top: 20px;
+        
+        .imageWrapper {
+            border-radius: unset !important;
+            height: 240px !important;
+            width: 100% !important;
+            
+            img {
+                filter: hue-rotate(0) !important;
+                object-fit: contain !important;
+            }
+        }
+    }
+    .title {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .textWrapper {
+        margin: unset !important;
+        margin-bottom: 20px !important;
+    }
+
+    .scrumble {
+        font-size: 25px !important;
+    }
+}

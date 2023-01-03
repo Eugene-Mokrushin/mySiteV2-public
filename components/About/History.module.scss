@@ -1,0 +1,75 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.history {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .titleWrapper {
+        position: relative;
+        height: $headerHeight;
+        background-color: $mainBGcolor;
+        display: flex;
+        align-items: center;
+        padding-bottom: 2px;
+        border-bottom: 1px solid white;
+
+        .title {
+            display: inline-block;
+            color: white;
+            font-weight: weight(bold);
+            font-size: 60px;
+        }
+    }
+
+    .cardsWrapper {
+        position: relative;
+        display: flex;
+        height: calc(100vh - $headerHeight);
+        width: 100vw;
+        background-image: url(https://i.ibb.co/HtcY1Yq/gradient-5279.png), url(https://i.ibb.co/6Wt05zR/gradient-5275.png), url(https://i.ibb.co/ydckDy8/diamond-5047.png);
+        background-repeat: no-repeat;
+        background-position-x: 0, right, right;
+        background-position-y: 0, top, bottom;
+        justify-content: space-around;
+
+
+    }
+
+}
+
+.mobile {
+    height: fit-content !important;
+
+    .titleWrapper {
+        height: 80px !important;
+
+        .title {
+            display: grid;
+            align-content: center;
+            height: 80px !important;
+            font-size: 40px !important;
+        }
+    }
+
+    .cardsWrapper {
+        padding: 0 0 20px 0 !important;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 200px) {
+    .cardsWrapper {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}

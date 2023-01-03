@@ -1,0 +1,184 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.SVG {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.diplomasWrapper {
+
+    height: calc(100vh - $headerHeight);
+    width: 100vw;
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .titleWrapper {
+        position: relative;
+        height: $headerHeight;
+        background-color: $mainBGcolor;
+        display: flex;
+        align-items: center;
+        padding-bottom: 2px;
+        border-bottom: 1px solid white;
+
+        .title {
+            display: inline-block;
+            color: white;
+            font-weight: weight(bold);
+            font-size: 60px;
+            letter-spacing: 1px;
+        }
+    }
+
+    .allDiplomas {
+        background-image: url(https://i.ibb.co/VmQcNKg/gradient-5274.png),
+            url(https://i.ibb.co/dbKx6xn/gradient-5272.png),
+            url(https://i.ibb.co/LNpw9Pj/diamond-5046.png),
+            url(https://i.ibb.co/ydckDy8/diamond-5047.png),
+            url(https://i.ibb.co/dgSSjjd/diamond-5244.png),
+            url(https://i.ibb.co/1JZjT8t/diamond-5245.png);
+        background-repeat: no-repeat;
+        background-position-x: left, right, left, right, 60%, 30%;
+        background-position-y: center, center, bottom, top, 30%, 60%;
+        position: relative;
+        height: calc(100vh - $headerHeight - $headerHeight);
+        width: 100vw;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+
+        .cardHolder {
+            margin: auto;
+            height: fit-content;
+            width: fit-content;
+            min-width: calc(((100vh - $headerHeight - $headerHeight) * 2/3) * 1.414);
+            min-height: calc((100vh - $headerHeight - $headerHeight) * 2/3);
+            position: relative;
+            list-style-type: none;
+            padding: 0;
+
+            .card {
+                z-index: 1;
+                border: 3px solid rgb(94, 94, 94);
+                cursor: pointer;
+                max-width: 600px;
+                max-height: 400px;
+                min-width: 100%;
+                min-height: 100%;
+                position: absolute;
+                box-shadow: 4px -8px 20px 0px #00000054;
+                border-radius: calc(30px + 3px);
+                transform: rotate(9deg) scale(0.95) translateY(-7%) translateX(5%);
+
+                &:hover {
+                    transition: box-shadow .5s;
+                    box-shadow: 0px 0px 14px 1px cyan;
+                }
+
+                img {
+                    border-radius: 30px;
+                }
+            }
+        }
+    }
+
+    .fullDiploma {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+
+        .diploma {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 21;
+            object-fit: contain;
+            max-width: 80%;
+            max-height: 80%;
+            box-shadow: 0px 0px 20px 13px #776387;
+        }
+    }
+}
+
+@media only screen and (max-width: 770px) and (min-width: 650px) {
+    .cardHolder {
+        transform: scale(0.8);
+    }
+}
+
+@media only screen and (max-width:650px) and (min-width: 200px) {
+    .cardHolder {
+        transform: scale(0.6);
+    }
+}
+
+.mobile {
+    height: fit-content !important;
+    overflow: hidden;
+    position: relative;
+
+    .allDiplomas {
+        height: fit-content !important;
+    }
+
+    .fullDiploma {
+        z-index: 33;
+        top: -20% !important;
+        transform: scale(1.8) !important;
+    }
+
+    .titleWrapper {
+        height: 80px !important;
+
+        .title {
+            display: grid;
+            align-content: center;
+            height: 80px !important;
+            font-size: 40px !important;
+        }
+    }
+
+    .swiper {
+        width: 50%;
+        display: flex;
+        margin: 0 auto;
+
+        div {
+            display: grid;
+            width: 50%;
+            transition: .3s;
+            height: 80px;
+            background-color: #28099b5e;
+            border-radius: 20px 0 0 0;
+            border: 1px solid white;
+
+            img {
+                filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(12%) hue-rotate(103deg) brightness(105%) contrast(105%);
+                margin: auto;
+                min-height: 40px;
+                max-height: 40px;
+            }
+
+            &:active {
+                transition: .3s;
+                background-color: #e7e7e75e;
+            }
+        }
+
+        .right {
+            transform: scaleX(-1);
+        }
+    }
+}

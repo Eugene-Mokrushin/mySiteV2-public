@@ -1,0 +1,201 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.lastSectionWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .gridWrapepr {
+        position: relative;
+        height: calc(100vh - $headerHeight * 2);
+        background-image: url(https://i.ibb.co/6Wt05zR/gradient-5275.png), url(https://i.ibb.co/CBY1zbb/gradient-5271.png), url(https://i.ibb.co/LNpw9Pj/diamond-5046.png);
+        background-repeat: no-repeat;
+        background-position-x: right, left, left;
+        background-position-y: center, top, bottom;
+        width: 100vw;
+
+        .galleryView {
+            height: 100%;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .galleryContainer {
+                height: 100%;
+                width: 100vw;
+                background: transparent;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                position: relative;
+
+
+                .leftView {
+                    cursor: pointer;
+                    background-position: center center !important;
+                    background-size: cover !important;
+                    background-repeat: no-repeat !important;
+                    height: 80%;
+                    width: 150px;
+                    opacity: 0.5;
+                    border-radius: 5px;
+                    transform-origin: top right;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: opacity 1s;
+
+                }
+
+                .leftView:hover {
+                    opacity: 1;
+                    transition: opacity 1s;
+                }
+
+                .linkTag {
+                    max-height: 90%;
+                    height: $heightMainPhoto;
+                    width: calc(($heightMainPhoto / 9)* 16);
+                    z-index: 1;
+                    box-sizing: border-box;
+
+                    .mainView {
+                        background-position: center center !important;
+                        background-size: cover !important;
+                        background-repeat: no-repeat !important;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 5px;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        z-index: 1;
+                        transition: transform 1s;
+                    }
+
+                    .mainView:hover {
+                        transform: scale(1.05);
+                        transition: transform 1s;
+                    }
+                }
+
+
+                .rightView {
+                    cursor: pointer;
+                    background-position: center center !important;
+                    background-size: cover !important;
+                    background-repeat: no-repeat !important;
+                    height: 80%;
+                    width: 150px;
+                    opacity: 0.5;
+                    border-radius: 5px;
+                    transform-origin: top left;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: opacity 1s;
+                    margin-left: 20px;
+                }
+
+                .rightView:hover {
+                    opacity: 1;
+                    transition: opacity 1s;
+                }
+
+                .navBtns {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    border: none;
+                    position: absolute;
+                    opacity: 0.8;
+                    background-color: transparent;
+                    cursor: pointer;
+                    color: white;
+                }
+
+                .navBtns:hover {
+                    opacity: 1;
+                    transition: all 1s;
+                    background-color: #eb9100;
+                }
+
+                .navLeft {
+                    left: 50px;
+                }
+
+                .navRight {
+                    right: 50px;
+                }
+            }
+
+        }
+
+    }
+}
+@media only screen and (min-width: 700px) {
+    .mobile{
+        .titleWrapper {
+            height: $headerHeight !important;
+            .title {
+                font-size: calc($headerHeight/ 1.5) !important;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width:700px) and (min-width: 200px) {
+    .galleryContainer {
+        transform: scale(0.9);
+    }
+
+    .title {
+        display: grid;
+        align-content: center;
+        font-size: 50px !important;
+    }
+}
+@media only screen and (max-width:500px) and (min-width: 200px) {
+    .mobile {
+        .gridWrapepr {
+            height: fit-content !important;
+        }
+        .galleryContainer {
+            height: fit-content !important;
+            flex-direction: column !important;
+    
+            .leftView,
+            .rightView {
+                width: 90% !important;
+                height: 20% !important;
+                margin: 10px 0 !important;
+                min-height: 84px !important;
+            }
+            .linkTag {
+                width: 100vw !important;
+            }
+            .mainView {
+                width: 95vw !important;
+            }
+        }
+        .titleWrapper {
+            height: 80px !important;
+        }
+        .title {
+            display: grid;
+            align-content: center;
+            font-size: 34px !important;
+        }
+        .galleryView {
+            height: fit-content !important;
+        }
+    }
+}

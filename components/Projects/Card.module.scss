@@ -1,0 +1,229 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+$randomSecond : random($limit: 15)+4;
+
+@for $i from 1 through 10 {
+    .tagTrigger:hover>.tagsWrapper>.tag:nth-child(#{$i}n) {
+        animation-name: tagDrop;
+        animation-delay: #{$i * 0.1}s;
+        animation-duration: .3s;
+        animation-timing-function: linear;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+    }
+}
+
+.tagTrigger {
+    position: relative;
+}
+
+.cardWrapper {
+    opacity: 0;
+    position: relative;
+    margin: 25px 10px;
+    height: 172px;
+    width: 300px;
+
+    .date {
+        transition: .3s;
+        transform: translateY(40px);
+        padding: 1% 5%;
+        position: absolute;
+        width: fit-content;
+        left: 60%;
+        border-radius: 1rem 1rem 0 0;
+        font-weight: weight(bold);
+        background-color: white;
+        font-style: italic;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .imgTitleWrapper {
+        z-index: 1;
+        position: relative;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+
+        .imgWrapper {
+            height: 100%;
+            width: 100%;
+            border-radius: $tagsCardDrop;
+            z-index: 4;
+            border: 2px solid white;
+            background-size: cover !important;
+            background-position: center !important;
+            z-index: 6;
+            scale: 0.95;
+            min-height: 100%;
+            position: relative;
+
+            img,
+            span {
+                z-index: 99;
+                border-radius: 1rem;
+            }
+
+        }
+
+        .hidden {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0px 0px 20px 20px #f1ecec31;
+
+            img {
+                transition: .3s;
+                filter: blur(5px);
+            }
+        }
+
+        .shown {
+            img {
+                transition: .3s;
+                filter: blur(0px);
+            }
+        }
+
+        .title {
+            margin: 0 auto;
+            text-align: center;
+            width: 85%;
+            height: fit-content;
+            font-size: 25px;
+            color: $mainBGcolor;
+            font-weight: weight(bold);
+            z-index: 11;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transition: opacity .2s ease-in-out;
+            -webkit-text-stroke: .5px rgba(240, 240, 240, 0.479);
+        }
+    }
+
+    .tagsWrapper:hover .tag {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    .tagsWrapper {
+        position: absolute;
+        transform: translateY(-40px);
+        width: fit-content;
+        margin-left: 8px;
+        display: flex;
+        padding-left: $tagsCardDrop;
+        transition-delay: 1s;
+
+        .tag {
+            opacity: 0;
+            z-index: -3040;
+            transform: translateY(-40px);
+            min-width: 65px;
+            text-align: center;
+            margin-left: -5px;
+            cursor: pointer;
+            background: white;
+            font-weight: weight(medium);
+            padding: 1px 5px;
+            border-radius: 0px 0px 10px 10px;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+
+            .textSpan {
+                width: 100%;
+                background-image: linear-gradient(350deg,
+                        #231557 0%,
+                        #44107a 29%,
+                        #ff1361 67%,
+                        #fff800 100%);
+                background-size: auto auto;
+                background-clip: border-box;
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                // text-fill-color: transparent;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: textclip 5s ease-in-out infinite;
+                display: inline-block;
+            }
+        }
+
+        .tag:hover {
+            border-left: 1px solid white;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+
+            .textSpan {
+                color: white !important;
+                background: white;
+                -webkit-background-clip: text;
+                background-clip: text;
+                backdrop-filter: blur(0px);
+            }
+        }
+
+    }
+
+}
+
+.mobile {
+    .tagsWrapper {
+        transform: translateY(0px) !important;
+        transition: .4s;
+
+        .tag {
+            transition: .4s;
+            transform: translateY(0px) !important;
+            opacity: 1 !important;
+        }
+    }
+
+    .date {
+        transform: translateY(-20px) !important;
+    }
+}
+
+@keyframes aitf {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes tagDrop {
+    0% {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+}

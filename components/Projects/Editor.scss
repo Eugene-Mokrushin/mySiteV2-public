@@ -1,0 +1,79 @@
+#editorWrapper {
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+    margin: 0 auto;
+    padding-top: 50px;
+    min-height: 100vh;
+    background-color: white;
+
+
+    .editr__editor--invalid:before {
+        display: none;
+    }
+    .editr__editor--warning:before {
+        display: none;
+    }
+    .codex-editor {
+
+        .codex-editor__redactor {
+            padding-bottom: 50px !important;
+        }
+
+        .codex-editor__redactor {
+            img {
+                margin: 0 auto !important;
+            }
+        }
+
+        .ce-block {
+            transform: scale(1.1);
+            transition: .5s;
+            opacity: 0;
+        }
+
+        .shownP {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            transition: .5s;
+        }
+
+        .ce-block__content {
+            max-width: 850px;
+
+            .ce-paragraph {
+                font-size: 25px;
+                font-weight: 300;
+            }
+
+            .ce-delimiter {
+                padding: 60px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 200%;
+
+                &::before {
+                    text-align: center;
+                    font-size: 50px;
+                }
+            }
+
+            .ce-header {
+                font-size: 35px;
+            }
+
+            .image-tool__caption {
+                font-size: 20px;
+            }
+
+            .cdx-nested-list {
+                margin: 20px 0px;
+                font-size: 30px;
+
+                &__item::before {
+                    font-weight: 600;
+                }
+            }
+        }
+
+    }
+}

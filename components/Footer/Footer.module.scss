@@ -1,0 +1,115 @@
+@import '../../sass/variables';
+
+@function weight($weigh-name) {
+    @return map-get($map: $font-weights, $key: $weigh-name)
+}
+
+;
+
+.footer {
+
+    height: $headerHeight;
+    max-height: $headerHeight;
+    background-color: $mainBGcolor;
+    background-image: url('https://i.ibb.co/0MxMGfL/gradient-5284.png'), url('https://i.ibb.co/HtcY1Yq/gradient-5279.png'), url('https://i.ibb.co/pXfXqdN/gradient-5285.png'), url('https://i.ibb.co/ydckDy8/diamond-5047.png');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position-x: left, left, right, right;
+    background-size: auto, auto, auto, 10%;
+
+    border-top: 2px solid $whiteBorder;
+    box-shadow: 0px -2px 20px 3px #4f484899;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    font-family: 'Urbanist', 'Comfortaa', sans-serif;
+
+    .socialsWrapper {
+        margin-top: .5%;
+        display: flex;
+        justify-content: space-around;
+        max-width: 900px;
+        width: 90%;
+
+        .logoLink {
+            user-select: none;
+
+            .logoImg {
+                filter: invert(100%) sepia(3%) saturate(400%) hue-rotate(63deg) brightness(118%) contrast(85%);
+            }
+
+            .logoImg:hover {
+                animation: shine 2s infinite ease-in-out alternate;
+                -webkit-mask-image: linear-gradient(135deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+                -webkit-mask-size: 200%;
+            }
+        }
+    }
+
+    .copy {
+        width: 100%;
+
+        text-align: center;
+        color: $menuLinkColor;
+
+        font-weight: weight(regular);
+        font-size: 25px;
+
+        user-select: none;
+
+        background-image: url('https://i.ibb.co/q9sqW0L/shape-5049.png'), url('https://i.ibb.co/q9sqW0L/shape-5049.png');
+        background-repeat: no-repeat;
+        background-position-x: 25%, 15%;
+    }
+
+    .copy::before {
+        content: "©";
+        margin-right: 10px;
+    }
+
+}
+
+@keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 755px) {
+    .socialsWrapper {
+        width: 70% !important;
+    }
+
+    .copy {
+        background-image: url(https://i.ibb.co/q9sqW0L/shape-5049.png) !important;
+    }
+}
+
+@media only screen and (max-width: 755px) and (min-width: 570px) {
+    .socialsWrapper {
+        width: 70% !important;
+    }
+
+    .copy {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 570px) and (min-width: 200px) {
+    .socialsWrapper {
+        width: 100% !important;
+        img {
+            max-height: 8vh;
+        }
+    }
+
+    .copy {
+        display: none;
+    }
+}
